@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #A0B6D8;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"], .back-button {
+            background-color: #007bff; /* Bright blue button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Added for the anchor tag */
+            display: inline-block; /* Added for the anchor tag */
+            margin-bottom: 20px; /* Added to create space between buttons */
+        }
+        input[type="submit"]:hover, .back-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        footer {
+            background-color: #007bff; /* Bright blue footer */
+            color: white;
+            padding: 1px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter All Fields</h2>
+        {{message}}
+        <form action="/submit_student" method="post">
+            <label for="idnumber">ID Number:</label>
+            <input type="text" id="idnumber" name="idnumber" required><br>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+            
+            <!-- Hidden input for club ID -->
+            <input type="hidden" id="club_id" name="club_id" value="{{club_id}}">
+            
+            <input type="submit" value="Submit">
+            <a href="/view_club/{{club_id}}" class="back-button">Back</a>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p> <!-- Update the year and platform name as needed -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Change font to Arial */
+            background-color: #f0f8ff; /* Light blue-gray background */
+            margin: 0;
+            margin-bottom: 50px;
+            padding: 0;
+	        background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+
+        .header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    padding-bottom: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left :25px;
+}
+
+.header-message {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto; /* Added margin */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px; /* Added padding */
+        }
+
+        h1 {
+            
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h2, h3 {
+            color: #081f44;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            color: #333;
+            margin: 0 0 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .notification {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .notification h3 {
+            margin: 0 0 5px;
+        }
+
+        .notification p {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+.club-details{
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.notifications {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.);
+        }
+.notifications h2{
+    padding-bottom: 10px;
+    padding-top:     5px;
+    color: #007bff;
+
+}
+
+.club-details h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.leader-info {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.leader-info h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.leader-info p {
+    margin-bottom: 5px;
+}
+
+
+
+     
+.button-container {
+    text-align: left; /* Align the button to the left */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+        /* Notification Types */
+        .notification.New.Club {
+            background-color: #dff0d8; /* Success Green */
+            border-left: 4px solid #28a745; /* Success Green Border */
+            margin-bottom: 30px;
+        }
+
+        .notification.General {
+            background-color: #d1ecf1; /* Info Blue */
+            border-left: 4px solid #17a2b8; /* Info Blue Border */
+            margin-bottom: 30px;
+        }
+
+        .notification.New.Member {
+            background-color: #f8d7da; /* Danger Red */
+            border-left: 4px solid #dc3545; /* Danger Red Border */
+            margin-bottom: 30px;
+        }
+
+        .notification.Info.Changes {
+            background-color: #faf2cc; /* Warning Yellow */
+            border-left: 4px solid #ffc107; /* Warning Yellow Border */
+            margin-bottom: 30px;
+        }
+
+        footer {
+    background-color: #007bff; /* Bright blue footer */
+    color: #fff;
+    padding: 10px;
+    padding-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Align the footer to the left side */
+    width: 100%;
+    text-align: center;
+}
+
+.club-title {
+    color: #007bff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">Club Information</h1>
+        <p class="header-message">{{ message }}</p>
+    </header>
+
+    <div class="container">
+        <div class="club-details">
+            <h2 class="club-title">{{ club_info['clubName'] }}</h2>
+            <p class="description">{{ club_info['description'] }}</p>
+        
+            <div class="leader-info">
+                <h3>Club Leader</h3>
+                <p> {{ club_info['clubLeader'] }}</p>
+            </div>
+        </div>
+        
+
+        <div class="notifications">
+            <h2>Notifications</h2>
+            <ul>
+                {% for notification in notifications %}
+                <li class="notification {{ notification['type'] }}">
+                    <h3>{{ notification['subject'] }}</h3>
+                    <p>{{ notification['message']|safe }}</p>
+                    <p><strong>Date:</strong> {{ notification['date'] }}</p>
+                    <p><strong>Time: </strong>{{ notification['time'] }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class ='button-container'>
+            <a href="/clubs_im_in" class="button">Back</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Club Management System. All rights reserved.</p> <!-- Update the year and platform name as needed -->
+        </footer>  
+    </body>
+   
+    </html>

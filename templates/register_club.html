@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register New Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #081f44;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Center the container vertically */
+	    background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #d9eef2;
+            padding: 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 50px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff; /* Blue button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        footer {
+            background-color: #007bff; /* Blue footer */
+            color: white;
+            padding: 3px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{{message}}</h2>
+        <form id="clubForm" action="/create_club" method="post">
+            <label for="clubName">Club Name:</label>
+            <input type="text" id="clubName" name="clubName" required><br>
+            
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required><br>
+            
+            <input type="hidden" id="clubLeader" name="clubLeader" value="{{ leader_id }}" required>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

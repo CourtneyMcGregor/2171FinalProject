@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leader Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light blue-gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+
+        header {
+            background-color: #007bff; 
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        main {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section {
+            background-color: #49A896; 
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            max-width: 300px; /* Limit the width of the sections */
+            width: 50%; /* Ensure sections take full width within the container */
+        }
+
+        h1, h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #fff; /* Steel blue heading */
+        }
+
+        footer {
+            background-color: #007bff; /* Bright blue footer */
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Style links as buttons */
+        a.button {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: #183D98; /* Steel blue button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #540672; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Main Page {{fullname}} </h1>
+        <p>{{message}}</p>
+    </header>
+
+    <main>
+        <section id="profile">
+            <h2><a href="/get_student_info_leader" class="button">Profile Information</a></h2>
+        </section>
+
+        <section id="my-club">
+            <h2><a href="/my_club" class="button">My Club</a></h2>
+        </section>
+
+        <section id="browse-clubs">
+            <h2><a href="/search_clubs_leader" class="button">Browse Clubs</a></h2>
+        </section>
+        
+        <section id="log-out">
+            <h2><a href="/logout" class="button">Logout</a></h2>
+        </section>
+
+        <section id="clubs-im-in">
+            <h2><a href="/clubs_im_in_leader" class="button">Clubs I'm In</a></h2>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

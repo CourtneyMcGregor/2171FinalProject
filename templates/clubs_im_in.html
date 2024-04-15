@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubs I'm In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue-gray background */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+	    background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+        header {
+            background-color: #007bff; /* Bright blue header */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff; /* White container background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 20px;
+            color: #fff; /* Bright blue heading */
+            text-align: center;
+        }
+        .list-container {
+            text-align: center; /* Center text */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            background-color: #f0f0f0; /* Light gray list item background */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #fff; /* Bright blue heading */
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff; /* Bright blue link color */
+        }
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Bright blue button */
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        a.button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        footer {
+            background-color: #007bff; /* Bright blue footer */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 8px;
+	        position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Clubs I'm In</h1>
+    </header>
+    <div class="container">
+        <div class="list-container">
+            <ul>
+                {% for club in clubs %}
+                    <li>
+                        <h2>{{ club['clubName'] }}</h2> <!-- Club name as h2 -->
+                        <a href="{{ url_for('club_info_member', club_name=club['clubName']) }}" class="button">View</a> <!-- Moved button below club name -->
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul>
+                <li><a href="/student-main" class="button">Back</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Add other content or functionalities as needed -->
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p> <!-- Update the year and platform name as needed -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Account Type</title>
+    <style>   
+        body {
+            font-family: 'Roboto', sans-serif; /* Change font to Roboto */
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Arrange header, body, and footer vertically */
+            justify-content: space-between; /* Space between header, body, and footer */
+            min-height: 100vh;
+	    background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+
+        header {
+            background-color: #4682b4; /* Steel blue header */
+            color: #fff;
+            padding: 20px 0; /* Increase padding */
+            text-align: center;
+        }
+
+        footer {
+            background-color: #4682b4; /* Steel blue footer */
+            color: #333;
+            padding: 5px 0; /* Increase padding */
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px; /* Spacing between header and content */
+            margin-bottom: 50px; /* Spacing between content and footer */
+        }
+
+        .button {
+            padding: 15px 30px; /* Slightly larger buttons */
+            background-color: #87ceeb; /* Sky blue for buttons */
+            color: #fff;
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer;
+            margin: 10px;
+            font-size: 20px; /* Larger font size */
+            transition: background-color 0.3s ease; /* Smooth hover transition */
+        }
+
+        .button:hover {
+            background-color: #4682b4; /* Darker blue on hover */
+        }
+
+        h1{
+            color: #fff; /* Steel blue for headings */
+        }
+	h2 {
+            color: #333; /* Steel blue for headings */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Clubs Management System</h1> 
+    </header>
+
+    <div class="container">
+        <h2>Welcome to School's Club Platform</h2> 
+        <p>Please select your account type:</p>
+        <button class="button" onclick="location.href='/register'">Student</button>
+        <button class="button" onclick="location.href='/register-leader'">Club Leader</button> <!-- Changed "Club Leader" to "Teacher" -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p> 
+    </footer>
+</body>
+</html>
+

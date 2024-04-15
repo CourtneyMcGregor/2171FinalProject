@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Club Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #081f44;
+            margin: 0;
+            padding: 0;
+	     background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #d9eef2;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center text */
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff; /* Bright blue button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        footer {
+            background-color: #007bff; /* Bright blue footer */
+            color: white;
+            padding: 1px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Club Information</h2>
+        {{message}}
+        <form id="clubForm" action="/submit_edit" method="post">
+            <input type="hidden" id="originalClubName" name="originalClubName" value="{{ club_info['clubName'] }}">
+            
+            <label for="clubName">Club Name:</label>
+            <input type="text" id="clubName" name="clubName" value="{{ club_info['clubName'] }}" required><br>
+            
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ club_info['description'] }}" required><br>
+
+            <!-- Add other club information fields here with their corresponding values -->
+            
+            <input type="submit" value="Submit">
+            <li><a href="/club_info_leader/{{ club_info['clubName']}}">Back</a></li>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p> <!-- Update the year and platform name as needed -->
+    </footer>
+</body>
+</html>

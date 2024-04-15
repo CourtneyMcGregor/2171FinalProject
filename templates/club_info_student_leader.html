@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+            color: #333; /* Dark gray text */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+
+        .sub-container {
+            background-color: rgba(255, 255, 255, 1);
+            
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        }
+
+        .sub-container.desc {
+            background-color: rgba(255, 255, 255, 1);
+            
+            padding: 20px;
+            padding-top: 40px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff; /* Steel blue heading */
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px; /* Add some space above the buttons */
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff; /* Steel blue button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Lighter steel blue on hover */
+        }
+
+        footer {
+            background-color: #007bff; /* Steel blue footer */
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sub-container">
+            <h1>Club Information</h1>
+            <p>{{ message }}</p>
+        </div>
+
+        <div class="sub-container desc">
+            <ul>
+                <li><strong>Club Name:</strong> {{ club_list.clubName }}</li>
+                <li><strong>Description:</strong> {{ club_list.description }}</li>
+            </ul>
+            <div>
+                <a href="/join_club_leader/{{club_list.id}}">Join</a>
+                <a href="/search_clubs_leader">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p> <!-- Update the year and platform name as needed -->
+    </footer>
+</body>
+</html>

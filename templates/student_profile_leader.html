@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+	    background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
+            background-size: cover;
+        
+        }
+
+        header {
+            background-color: #007bff; /* Updated header color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            background-color: #e7e2e2;
+            padding: 80px;
+        }
+
+        section {
+            margin-bottom: 30px;
+            background-color: #fff; /* Added background color to the section */
+            padding: 20px; /* Added padding to the section */
+            border-radius: 8px; /* Added border radius */
+            
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #007bff; /* Updated footer color */
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul li strong {
+            font-weight: bold;
+        }
+
+        /* Style for the button */
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Updated button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* Remove default underline */
+            transition: background-color 0.3s ease; /* Added transition */
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Profile</h1>
+    </header>
+
+    <main>
+        <section id="profile-info">
+            <h2>Profile Information</h2>
+            <ul>
+                <li><strong>ID Number:</strong> {{ student.idnumber }}</li>
+                <li><strong>Name:</strong> {{ student.first_name }}</li>
+                <li><strong>Gender:</strong> {{ student.gender }}</li>
+                <li><strong>Date of Birth:</strong> {{ student.dob }}</li>
+                <li><strong>Phone:</strong> {{ student.phone }}</li>
+                <li><strong>Email:</strong> {{ student.email }}</li>
+                <!-- Converted "Back" link to a button -->
+                <li><a href="/student-main" class="back-button">Back</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Club Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
