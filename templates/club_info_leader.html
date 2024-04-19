@@ -16,29 +16,24 @@
             background-size: cover;
         }
 
-        .header {
-            background-color: #007bff;
+        header {
+            background-color: #007bff; 
             color: #fff;
-            padding: 20px;
-            padding-bottom: 25px;
-            text-align: center;
+            padding: 10px;
+           
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
             margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .header-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
+        header h1 {
+            color: #fff;
             text-align: left;
-            padding-left: 25px;
+            margin-left: 20px;
         }
-
-        .header-message {
-            font-size: 16px;
-            margin-bottom: 0;
-        }
+       
 
         .container {
             max-width: 800px;
@@ -75,14 +70,7 @@
             margin-bottom: 5px;
         }
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
+    
 
         .notification {
             padding: 15px;
@@ -225,16 +213,19 @@
             margin-bottom: 30px;
         }
 
-        footer {
+        footer{
             background-color: #007bff; /* Bright blue footer */
-            color: #fff;
-            padding: 10px;
-            padding-top: 20px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
-            left: 0; /* Align the footer to the left side */
+            left: 0;
             width: 100%;
-            text-align: center;
+        }
+        footer p{
+            color: #ffffff;
+            margin: 0px;
         }
 
         .club-title {
@@ -246,16 +237,54 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        nav {
+            display: flex;
+            margin-right: 20px;
+
+            
+        }
+
+        nav a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Steel blue button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+  
+           
+        }
+
+        nav a.button:hover {
+            background-color: #0056b3; 
+        }
+        .mess{
+            color: #54dc35;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-<header class="header">
-    <h1 class="header-title">Club Information</h1>
-    <p class="header-message">{{ message }}</p>
-</header>
+    <header>
+       
+        <h1>Club Management System</h1>
+        
+        <nav>
+            <a href="/leader-main" class="button">Main Page</a>
+            <a href="/get_student_info_leader" class="button">Profile Information</a>
+            <a href="/search_clubs_leader" class="button">Browse Clubs</a>
+            <a href="/logout" class="button">Logout</a>
+           
+        </nav>
+    </header>
 
 <div class="container">
     <div class="club-details">
+        <p class="mess">{{message}}</p>
         <h2 class="club-title">{{ club_info['clubName'] }}</h2>
         <p class="description">{{ club_info['description'] }}</p>
 
@@ -291,9 +320,8 @@
     </div>
 
     <div class="button-container">
-        <a href="/leader-main" class="button">Back</a>
         <a href="/edit-club/{{ club_info['clubName'] }}" class="button">Edit Club</a>
-        <a href="/create-notification/{{ club_info['id'] }}/General" class="button">New Notification</a>
+        <a href="/create-notification/{{ club_info['id'] }}/General" class="button">Create Notification</a>
     </div>
 
     <footer>
@@ -305,12 +333,12 @@
     function toggleMemberInfo() {
         var memberInfo = document.getElementById("memberInfo");
         var but = document.getElementById("show");
-        if (memberInfo.style.display === "none") {
-            memberInfo.style.display = "block";
-            but.innerHTML = "Hide";
-        } else {
+        if (memberInfo.style.display === "block") {
             memberInfo.style.display = "none";
             but.innerHTML = "Show";
+        } else {
+            memberInfo.style.display = "block";
+            but.innerHTML = "Hide";
 
         }
     }

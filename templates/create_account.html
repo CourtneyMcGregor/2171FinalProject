@@ -13,39 +13,53 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Adjusted height for better centering */
-	    background-color: #f0f0f0; /* Light gray background */
+            min-height: 100vh;
             background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
             background-size: cover;
         }
+
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
-            background-color: #A0B6D8; /* White container background */
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 100px;
+            margin-top: 100px;
+            
         }
+
         h1 {
             margin-top: 20px;
-            color: #1B39E6s; /* Bright blue header */
+            color: #1B39E6; /* Bright blue header */
             text-align: center;
         }
+
         h2 {
             color: #007bff; /* Bright blue heading */
             margin-bottom: 10px;
+            text-align: center;
         }
+
         .create-account-form {
-            width: 400px;
-            padding: 20px;
+            width: 100%;
+           
+           
+
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         label {
             font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333; /* Dark gray label */
         }
+
         input[type="text"],
         input[type="date"],
         input[type="email"],
@@ -54,16 +68,18 @@
         input[type="password"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #cccccc;
+            border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
         }
+
         .dob-gender,
         .email-phone,
         .passwords {
             display: flex;
-            margin-bottom: 20px;
+          
         }
+
         .dob,
         .gender,
         .email,
@@ -71,44 +87,68 @@
         .password,
         .confirm-password {
             flex: 1;
-            margin-right: 10px;
+          
+           
         }
+
+        .dob,
+        
+        .email,
+       
+        .password {
+        
+          
+            margin-right: 12px;
+        }
+
         button {
-            padding: 10px;
+            padding: 15px 30px; /* Larger padding for buttons */
             background-color: #007bff; /* Bright blue button */
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            font-size: 16px; /* Adjusted font size for buttons */
+            transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
+
         footer {
             background-color: #007bff; /* Bright blue footer */
-            color: #fff;
-            padding: 1px;
+            padding: 25px;
             text-align: center;
-            margin-top: 20px;
             border-radius: 8px;
-	     position: fixed;
+            position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
+            color: #fff; /* White text */
         }
+
+        footer p {
+            margin: 0;
+        }
+
         .err {
             color: red;
-        }
+            text-align: center;
+            margin-bottom: 10px;
+        }   
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Club Management System</h1>
-        <p class="err">{{ error_message }}</p>
+       
         <div class="create-account-form">
             <form action="/register" method="post">
                 <h2>Create Student Account</h2>
+                <p class="err">{{ error_message }}</p>
                 <div class="form-group">
-                    <label for="idnumber">Id Number</label>
+                    <label for="idnumber">ID Number</label>
                     <input type="text" id="idnumber" name="idnumber" required>
                 </div>
                 <div class="form-group">
@@ -119,45 +159,39 @@
                     <label for="last-name">Last Name</label>
                     <input type="text" id="last-name" name="last_name" required>
                 </div>
-                <div class="form-group">
-                    <div class="dob-gender">
-                        <div class="dob">
-                            <label for="dob">Date of Birth (D.O.B)</label>
-                            <input type="date" id="dob" name="dob" required>
-                        </div>
-                        <div class="gender">
-                            <label for="gender">Gender</label>
-                            <select id="gender" name="gender" required>
-                                <option value="">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
+                <div class="form-group dob-gender">
+                    <div class="dob">
+                        <label for="dob">Date of Birth (D.O.B)</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="gender">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="email-phone">
-                        <div class="email">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="phone">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
+                <div class="form-group email-phone">
+                    <div class="email">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="phone">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="passwords">
-                        <div class="password">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <div class="confirm-password">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" id="confirm-password" name="confirm_password" required>
-                        </div>
+                <div class="form-group passwords">
+                    <div class="password">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="confirm-password">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm_password" required>
                     </div>
                 </div>
                 <button type="submit">Create Account</button>

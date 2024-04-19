@@ -6,78 +6,114 @@
     <title>Select Account Type</title>
     <style>   
         body {
-            font-family: 'Roboto', sans-serif; /* Change font to Roboto */
+            font-family: 'Arial', sans-serif;
             background-color: #f0f8ff; /* Light blue background */
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column; /* Arrange header, body, and footer vertically */
-            justify-content: space-between; /* Space between header, body, and footer */
+            flex-direction: column;
+            justify-content: space-between;
             min-height: 100vh;
-	    background-color: #f0f0f0; /* Light gray background */
             background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
             background-size: cover;
         }
 
-        header {
-            background-color: #4682b4; /* Steel blue header */
-            color: #fff;
-            padding: 20px 0; /* Increase padding */
-            text-align: center;
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
-        footer {
-            background-color: #4682b4; /* Steel blue footer */
-            color: #333;
-            padding: 5px 0; /* Increase padding */
-            text-align: center;
+        header {
+            background-color: #007bff; 
+            color: #fff;
+            padding: 10px;
+           
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            color: #fff;
+            text-align: left;
+            margin-left: 20px;
         }
 
         .container {
             text-align: center;
-            margin-top: 50px; /* Spacing between header and content */
-            margin-bottom: 50px; /* Spacing between content and footer */
+            margin-bottom:250px;
+            background-color: rgba(255, 255, 255,0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            
         }
 
         .button {
-            padding: 15px 30px; /* Slightly larger buttons */
-            background-color: #87ceeb; /* Sky blue for buttons */
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Steel blue button */
             color: #fff;
             border: none;
-            border-radius: 8px; /* Rounded corners */
+            border-radius: 5px;
             cursor: pointer;
-            margin: 10px;
-            font-size: 20px; /* Larger font size */
-            transition: background-color 0.3s ease; /* Smooth hover transition */
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+            font-size: 16px;
+            margin: 5px;
+  
+           
         }
 
         .button:hover {
-            background-color: #4682b4; /* Darker blue on hover */
+            background-color: #0056b3; 
         }
 
-        h1{
-            color: #fff; /* Steel blue for headings */
+        .container h2 {
+            color: #333; /* Dark gray for headings */
+            margin-bottom: 40px; /* Add spacing between headings and paragraphs */
         }
-	h2 {
-            color: #333; /* Steel blue for headings */
+
+        .container p{
+            margin-bottom: 30px;
+        }
+
+
+        footer{
+            background-color: #007bff; /* Bright blue footer */
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        footer p{
+            color: #ffffff;
+            margin: 0px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Clubs Management System</h1> 
+        <h1>Club Management System</h1> 
     </header>
-
+<main>
     <div class="container">
-        <h2>Welcome to School's Club Platform</h2> 
+        <h2>Welcome to the Club Management System</h2> 
         <p>Please select your account type:</p>
         <button class="button" onclick="location.href='/register'">Student</button>
         <button class="button" onclick="location.href='/register-leader'">Club Leader</button> <!-- Changed "Club Leader" to "Teacher" -->
     </div>
-
+</main>
     <footer>
-        <p>&copy; 2024 Club Management System. All rights reserved.</p> 
+        <p>&copy; 2024 Club Management System. All rights reserved</p> 
     </footer>
 </body>
 </html>
-

@@ -16,57 +16,75 @@
         .container {
             max-width: 600px;
             margin: 50px auto;
-            background-color: #A0B6D8;
+            background-color: #fff; /* White background */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+           
         }
         h2 {
             text-align: center;
             margin-bottom: 20px;
+            color: #007bff; /* Steel blue heading */
         }
         label {
             font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555; /* Dark gray text */
         }
         input[type="text"], input[type="email"], input[type="tel"] {
-            width: 100%;
+            width: calc(100% - 22px); /* Adjusted for padding and border */
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+            border-color: #007bff; /* Steel blue border on focus */
         }
         input[type="submit"], .back-button {
-            background-color: #007bff; /* Bright blue button */
+            background-color: #007bff; /* Steel blue button */
             color: white;
-            padding: 10px 20px;
+            padding: 11px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none; /* Added for the anchor tag */
             display: inline-block; /* Added for the anchor tag */
-            margin-bottom: 20px; /* Added to create space between buttons */
+           /* Added to create space between buttons */
+            transition: background-color 0.3s ease;
+          
         }
         input[type="submit"]:hover, .back-button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
-        footer {
+        footer{
             background-color: #007bff; /* Bright blue footer */
-            color: white;
-            padding: 1px 0;
+            color: #fff; /* White text */
+            padding: 25px;
             text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            border-radius: 8px;
         }
+        footer p{
+            margin: 0px;
+        }
+        .back-button{
+            padding: 9.5px 20px;
+        }
+        .mess {color: red}
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Enter All Fields</h2>
-        {{message}}
+        <h2>Enter Contact Information</h2>
+        <p class="mess">{{message}}</p>
         <form action="/submit_student" method="post">
             <label for="idnumber">ID Number:</label>
             <input type="text" id="idnumber" name="idnumber" required><br>

@@ -7,17 +7,17 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #081f44;
             margin: 0;
             padding: 0;
-	     background-color: #f0f0f0; /* Light gray background */
+            background-color: #f0f0f0; /* Light gray background */
             background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
             background-size: cover;
+            color: #333; /* Dark gray text */
         }
         .container {
             max-width: 600px;
             margin: 50px auto;
-            background-color: #d9eef2;
+            background-color: #fff; /* White background */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,42 +25,56 @@
         }
         h1 {
             margin-bottom: 20px;
+            color: #007bff; /* Steel blue heading */
         }
         label {
             font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555; /* Dark gray text */
         }
-        input[type="text"], input[type="email"], textarea {
-            width: 100%;
+        input[type="text"], textarea {
+            width: calc(100% - 22px); /* Adjusted width to account for border and padding */
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
+            transition: border-color 0.3s ease;
         }
-        input[type="hidden"] {
-            display: none; /* Hide hidden input fields */
+        input[type="text"]:focus, textarea:focus {
+            border-color: #007bff; /* Steel blue border on focus */
         }
-        input[type="submit"] {
-            background-color: #007bff; /* Bright blue button */
+        input[type="submit"], .back-link {
+            background-color: #007bff; /* Steel blue button */
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 15px;
+            
         }
-        input[type="submit"]:hover {
+        input[type="submit"]:hover, .back-link:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
         footer {
             background-color: #007bff; /* Bright blue footer */
-            color: white;
-            padding: 1px 0;
+            color: #fff; /* White text */
+            padding: 25px;
             text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            border-radius: 8px;
         }
+        footer p {
+            margin: 0;
+        }
+        
     </style>
 </head>
 <body>
@@ -69,21 +83,21 @@
         {{message}}
         <form id="notificationForm" action="/submit-notification" method="post">
             <input type="hidden" name="club_id" value="{{ club_id }}">
-            <label for="subject">Subject:</label><br>
+            <label for="subject">Subject:</label>
             <input type="text" id="subject" name="subject" required><br>
             
-            <label for="message">Message:</label><br>
+            <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
             
             <input type="hidden" name="type" value="{{ notification_type }}">
             
             <input type="submit" value="Create Notification">
+            <a href="/club_info_leader/{{ club_info['clubName']}}" class="back-link">Back</a>
         </form>
+
     </div>
     <footer>
         <p>&copy; 2024 Club Management System. All rights reserved.</p> <!-- Update the year and platform name as needed -->
     </footer>
 </body>
 </html>
-
-

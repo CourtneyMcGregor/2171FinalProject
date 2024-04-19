@@ -7,27 +7,31 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #081f44;
             margin: 0;
             padding: 0;
-	     background-color: #f0f0f0; /* Light gray background */
+            background-color: #f0f0f0; /* Light gray background */
             background-image: url('https://image.freepik.com/free-vector/education-pattern-background_23-2148820815.jpg'); /* School-friendly background image */
             background-size: cover;
         }
         .container {
             max-width: 600px;
             margin: 50px auto;
-            background-color: #d9eef2;
+            background-color: #fff; /* White background */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Center text */
+            text-align: center;
         }
         h2 {
             margin-bottom: 20px;
+            color: #007bff; /* Steel blue heading */
         }
         label {
             font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+            text-align: left; /* Dark gray text */
         }
         input[type="text"], input[type="email"] {
             width: 100%;
@@ -36,27 +40,55 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #007bff; /* Steel blue border on focus */
         }
         input[type="submit"] {
-            background-color: #007bff; /* Bright blue button */
+            background-color: #007bff; /* Steel blue button */
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+            height: 80%;
+            margin-top: 7px;
         }
         input[type="submit"]:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
-        footer {
+        footer{
             background-color: #007bff; /* Bright blue footer */
-            color: white;
-            padding: 1px 0;
+            color: #fff; /* White text */
+            padding: 25px;
             text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            border-radius: 8px;
+        }
+        footer p{
+            margin: 0px;
+        }
+        .back-link {
+            color: #ffffff; /* Steel blue link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        
+        }
+        .back-link:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+          
         }
     </style>
 </head>
@@ -75,8 +107,10 @@
 
             <!-- Add other club information fields here with their corresponding values -->
             
-            <input type="submit" value="Submit">
-            <li><a href="/club_info_leader/{{ club_info['clubName']}}">Back</a></li>
+            <div class="button-container">
+                <input type="submit" value="Submit">
+                <p><a href="/club_info_leader/{{ club_info['clubName'] }}" class="back-link">Back</a></p>
+            </div>
         </form>
     </div>
     <footer>

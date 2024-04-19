@@ -17,11 +17,21 @@
         header {
             background-color: #007bff; 
             color: #fff;
-            padding: 20px;
-            text-align: center;
+            padding: 10px;
+           
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        header h1 {
+            color: #fff;
+            text-align: left;
+            margin-left: 20px;
+        }
+       
 
         main {
             padding: 10px;
@@ -31,82 +41,181 @@
         }
 
         section {
-            background-color: #49A896; 
+            
             margin-bottom: 30px;
             border-radius: 8px;
+            background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            max-width: 300px; /* Limit the width of the sections */
-            width: 50%; /* Ensure sections take full width within the container */
+            padding: 20px;
+            max-width: 800px; /* Limit the width of the sections */
+            width: 100%; /* Ensure sections take full width within the container */
         }
 
-        h1, h2 {
-            margin-top: 0;
+        section h1 {
+            margin-bottom: 30px;
             text-align: center;
-            color: #fff; /* Steel blue heading */
-        }
+            color: #007bff; /* Steel blue heading */
+            font-size: 30px ;
+        } 
+        section h2 {
+            margin-bottom: 50px;
+            text-align: center;
+            color: #007bff; /* Steel blue heading */
+           
+        } 
+       
 
-        footer {
+        footer{
             background-color: #007bff; /* Bright blue footer */
-            color: #fff;
-            padding: 10px;
+            
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
         }
-
-        footer p {
-            margin: 0;
+        footer p{
+            color: #ffffff;
+            margin: 0px;
         }
 
         /* Style links as buttons */
-        a.button {
+        nav {
+            display: flex;
+            margin-right: 20px;
+
+            
+        }
+
+        nav a.button {
             display: inline-block;
-            padding: 10px 10px;
-            background-color: #183D98; /* Steel blue button */
+            padding: 10px 20px;
+            background-color: #007bff; /* Steel blue button */
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            margin: 0 10px;
+  
+           
         }
 
-        a.button:hover {
-            background-color: #540672; 
+        nav a.button:hover {
+            background-color: #0056b3; 
         }
+
+        .tiles {
+            display: flex;
+            flex-wrap: wrap;
+           
+        }
+        .tile {
+            flex-basis: calc(33.33% - 20px);
+            background-color: rgba(0, 48, 145, 0.1); /* Light gray tile background */
+            margin-left: 11%;
+            margin-bottom: 7%;
+        
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .tile img {
+           
+           
+            height: 170px;
+            object-fit: cover;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin: 0px;
+        }
+        .tile h2 {
+            color: #ffffff; /* Bright blue heading */
+            margin: 10px;
+            font-size: 18px;
+            text-align: center;
+            
+            
+            
+        }
+
+        .clubName{
+            width: 100%;
+            height: 40px;
+            left: 0;
+            background-color:#007bff;
+            padding-top: 2px;
+            margin: 0;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+           
+        }
+        .tile .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tile:hover .overlay {
+            opacity: 1;
+        }
+        .tile .overlay a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff; /* Bright blue button */
+            border-radius: 5px;
+
+        
+        }
+        .mess{color: #54dc35;
+            font-weight: bold;}
+            h3 {color: red}
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Main Page {{fullname}} </h1>
-        <p>{{message}}</p>
+       
+        <h1>Club Management System</h1>
+        <nav>
+            <a href="/get_student_info_leader" class="button">Profile Information</a>
+            <a href="/my_club" class="button">My Club</a>
+            <a href="/search_clubs_leader" class="button">Browse Clubs</a>
+            <a href="/logout" class="button">Logout</a>
+           
+        </nav>
     </header>
 
     <main>
-        <section id="profile">
-            <h2><a href="/get_student_info_leader" class="button">Profile Information</a></h2>
+        <section>
+            <h1>Welcome to Main Page {{fullname}}</h1>
+            <p class="mess">{{message}}</p>
+            <h2>Clubs you are a member of:</h2>
+            <h3>{{other}} </h3>
+            <div class="tiles">
+                {% for club in clubs %}
+                <div class="tile">
+                    <img src="https://source.unsplash.com/300x200/?{{club['search']}}" alt="{{ club['clubName'] }}">
+                    <div class="overlay">
+                        <a href="{{ url_for('club_info_member_leader', club_name=club['clubName']) }}">View</a>
+                    </div>
+                    <div class="clubName">
+                    <h2>{{ club['clubName'] }}</h2>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
         </section>
-
-        <section id="my-club">
-            <h2><a href="/my_club" class="button">My Club</a></h2>
-        </section>
-
-        <section id="browse-clubs">
-            <h2><a href="/search_clubs_leader" class="button">Browse Clubs</a></h2>
-        </section>
-        
-        <section id="log-out">
-            <h2><a href="/logout" class="button">Logout</a></h2>
-        </section>
-
-        <section id="clubs-im-in">
-            <h2><a href="/clubs_im_in_leader" class="button">Clubs I'm In</a></h2>
-        </section>
-        
     </main>
 
     <footer>
@@ -114,4 +223,3 @@
     </footer>
 </body>
 </html>
-

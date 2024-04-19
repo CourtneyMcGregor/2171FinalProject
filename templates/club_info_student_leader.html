@@ -22,25 +22,14 @@
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-         }
-
-        .sub-container {
-            background-color: rgba(255, 255, 255, 1);
-            
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
         }
 
-        .sub-container.desc {
-            background-color: rgba(255, 255, 255, 1);
-            
+        .sub-container {
             padding: 20px;
-            padding-top: 40px;
             border-radius: 8px;
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+            background-color: rgba(255, 255, 255, 1);
         }
 
         h1 {
@@ -86,31 +75,43 @@
         }
 
         footer {
-            background-color: #007bff; /* Steel blue footer */
+            background-color: #007bff; /* Bright blue footer */
             color: #fff;
-            padding: 10px 0;
+            padding: 25px;
             text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
         }
+
+        footer p {
+            margin: 0;
+        }
+        .name{
+            margin-top: 10px;
+        }
+        .mess{color: red}
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sub-container">
             <h1>Club Information</h1>
-            <p>{{ message }}</p>
+            <p class="mess">{{ message }}</p>
         </div>
 
-        <div class="sub-container desc">
+        <div class="sub-container">
             <ul>
-                <li><strong>Club Name:</strong> {{ club_list.clubName }}</li>
+                <li class="name"><strong>Club Name:</strong> {{ club_list.clubName }}</li>
                 <li><strong>Description:</strong> {{ club_list.description }}</li>
+                <li><strong>Leader:</strong> {{ club_list.clubLeader }}</li>
+
             </ul>
-            <div>
-                <a href="/join_club_leader/{{club_list.id}}">Join</a>
-                <a href="/search_clubs_leader">Back</a>
+            <div class="button-container">
+                <a href="/join_club_leader/{{club_list.id}}" class="button">Join</a>
+                <a href="/search_clubs_leader" class="button">Back</a>
             </div>
         </div>
     </div>

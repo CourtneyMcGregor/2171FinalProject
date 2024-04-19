@@ -78,7 +78,14 @@ def logout():
 def student_main():
     if 'idnumber' in session:
         fullname = session['name'] 
-        return render_template('student_main.html', fullname=fullname) 
+        clubs = db_controller.get_clubs_by_membership(session['idnumber'])
+        for club in clubs:
+                words = " ".join(club['clubName'].split()[:-1])
+                club['search']=words
+        other_mess=''
+        if len(clubs) == 0:
+            other_mess = "you have not yet registered for any clubs"
+        return render_template('student_main.html', fullname=fullname, clubs = clubs,other = other_mess) 
     else: 
         return redirect(url_for('login'))
     
@@ -87,8 +94,15 @@ def leader_main():
     if 'idnumber' in session: 
         fullname = session['name']  
         islead = student_controller.check_leadership(session['idnumber'])
-        if islead:
-            return render_template('leader_main.html', fullname=fullname) 
+        if islead: 
+            clubs = db_controller.get_clubs_by_membership(session['idnumber'])
+            for club in clubs:
+                words = " ".join(club['clubName'].split()[:-1])
+                club['search']=words
+            other_mess=''
+            if len(clubs) == 0:
+                other_mess = "You have not yet registered for any clubs."
+            return render_template('leader_main.html', fullname=fullname,clubs = clubs, other = other_mess)  
         else:
            return register_ui.create_new_club('Please Register Your Club', session['idnumber'])
     else:
@@ -136,11 +150,8 @@ def register_leader():
         email = request.form['email']
         if password != confirm_password:
             return render_template('create_account_leader.html', error_message="Passwords do not match")
-        registration_message = student_controller.register_student(first_name, last_name, idnumber, password, account_type, gender, dob, phone, email)
-        
-        if registration_message == "Leader Account Created Successfully":
-            return render_template('login.html', error_message=registration_message)
         else:
+            registration_message = student_controller.register_student(first_name, last_name, idnumber, password, account_type, gender, dob, phone, email)
             return render_template('login.html', error_message=registration_message)
     else:
         return create_account_ui.create_club_leader_account()
@@ -202,16 +213,22 @@ def submit_student():
     email = request.form['email']
     phone_number = request.form['phone']
     club = request.form['club_id']
+    if id_number == session['idnumber']:
+        message = membership_controller.create_member(club, id_number,name,email,phone_number)
 
-    message = membership_controller.create_member(club, id_number,name,email,phone_number)
-
-    if message == "Successfully joined the club":
-       
-        return render_template('student_main.html', message = message, fullname = session['name'] )
-    elif message == "Already a member of this club":
-        return club_info_ui.display_club_info_student(club,message)
+        if message == "Successfully joined the club":
+        
+            clubs = db_controller.get_clubs_by_membership(session['idnumber'])
+            for club in clubs:
+                    words = " ".join(club['clubName'].split()[:-1])
+                    club['search']=words
+            return render_template('student_main.html', message = message, fullname = session['name'], clubs = clubs )
+        elif message == "Already a member of this club":
+            return club_info_ui.display_club_info_student(club,message)
+        else: 
+            return render_template('join.html',message = message)
     else: 
-        return render_template('join.html',message = message)
+        return render_template('join.html',message = "Please Enter your Correct Id Number",club_id = club)
 
 @app.route('/submit_student_leader', methods=['POST'])
 def submit_student_leader():
@@ -221,16 +238,22 @@ def submit_student_leader():
     email = request.form['email']
     phone_number = request.form['phone']
     club = request.form['club_id']
+    if id_number == session['idnumber']:
+        message = membership_controller.create_member(club, id_number,name,email,phone_number)
+        if message == "Successfully joined the club":
+            clubs = db_controller.get_clubs_by_membership(session['idnumber'])
+            for club in clubs:
+                words = " ".join(club['clubName'].split()[:-1])
+                club['search']=words
+            return render_template('leader_main.html', message = message, fullname = session['name'], clubs = clubs )
+        elif message == "Already a member of this club":
+            return club_info_ui.display_club_info_student_leader(club,message)
+        else: 
+            return render_template('join_leader.html',message = message)
+    else:
+        return render_template('join_leader.html',message = "Please Enter your Correct Id Number",club_id = club)
 
-    message = membership_controller.create_member(club, id_number,name,email,phone_number)
-
-    if message == "Successfully joined the club":
-        
-        return render_template('leader_main.html', message = message, fullname = session['name'] )
-    elif message == "Already a member of this club":
-        return club_info_ui.display_club_info_student_leader(club,message)
-    else: 
-        return render_template('join_leader.html',message = message)
+    
 
 @app.route('/join_club/<int:club_id>')
 def join(club_id):
@@ -278,10 +301,12 @@ def clubs_im_in():
 def my_club():
     idnumber = session['idnumber']
     club_id = db_controller.get_club_id_by_leader(idnumber)
-    club_name = db_controller.retrieve_club_by_id(club_id)['clubName']
+    club_name = db_controller. retrieve_club_by_id(club_id)['clubName']
+
+    
     return club_info_ui.display_club_leader(club_name,'')
 
-@app.route('/clubs_im_in_leader')
+@app.route('/clubs_im_in_leader')   
 def clubs_im_in_leader():
     idnumber = session['idnumber']
     clubs = db_controller.get_clubs_by_membership(idnumber)

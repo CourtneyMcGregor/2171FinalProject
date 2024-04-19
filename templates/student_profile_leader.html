@@ -15,14 +15,58 @@
         }
 
         header {
-            background-color: #007bff; /* Updated header color */
+            background-color: #007bff; 
             color: #fff;
-            padding: 20px;
-            text-align: center;
+            padding: 10px;
+           
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        nav {
+            display: flex;
+            margin-right: 20px;
+
+            
+        }
+
+        nav {
+            display: flex;
+            margin-right: 20px;
+
+            
+        }
+
+        nav a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Steel blue button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+  
+           
+        }
+
+        nav a.button:hover {
+            background-color: #0056b3; 
+        }
+
+        header h1 {
+            color: #fff;
+            text-align: left;
+            margin-left: 20px;
+        }
         main {
-            background-color: #e7e2e2;
+            background-color: rgba(212, 210, 210, 0.9);
             padding: 80px;
         }
 
@@ -34,22 +78,21 @@
             
         }
 
-        h1, h2 {
-            margin-top: 0;
-        }
 
-        footer {
-            background-color: #007bff; /* Updated footer color */
-            color: #fff;
-            padding: 10px;
+        footer{
+            background-color: #007bff; /* Bright blue footer */
+            
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
         }
-
-        footer p {
-            margin: 0;
+        footer p{
+            color: #ffffff;
+            margin: 0px;
         }
 
         ul {
@@ -80,11 +123,24 @@
         .back-button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
+        h2{
+            color:#007bff;
+            padding-bottom:5px ;
+            font-size: 35px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Student Profile</h1>
+       
+        <h1>Club Management System</h1>
+        <nav>
+            <a href="/leader-main" class="button">Main Page</a>
+            <a href="/my_club" class="button">My Club</a>
+            <a href="/search_clubs_leader" class="button">Browse Clubs</a>
+            <a href="/logout" class="button">Logout</a>
+           
+        </nav>
     </header>
 
     <main>
@@ -97,8 +153,6 @@
                 <li><strong>Date of Birth:</strong> {{ student.dob }}</li>
                 <li><strong>Phone:</strong> {{ student.phone }}</li>
                 <li><strong>Email:</strong> {{ student.email }}</li>
-                <!-- Converted "Back" link to a button -->
-                <li><a href="/student-main" class="back-button">Back</a></li>
             </ul>
         </section>
     </main>

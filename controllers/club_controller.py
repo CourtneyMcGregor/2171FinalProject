@@ -38,7 +38,7 @@ class ClubController:
             if self.db_controller.edit_club(original_club_name, edited_club_name, edited_description):
                 notification_controller = NotificationController(self.db_controller)
                 timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                notification_controller.create_notification(club_id, "Club Info Edited", "<br><strong>New Club Name:</strong> "+edited_club_name+", "+ "<div> <strong>New Club descrption:</strong> "+edited_description + "</div>", timestamp, "Info Changes")
+                notification_controller.create_notification(club_id, "Club Info Edited", "<br><strong>New Club Name:</strong> "+edited_club_name+ "<div> <strong>New Club descrption:</strong> "+edited_description + "</div>", timestamp, "Info Changes")
                 return "Club Information successfully edited"
             else: 
                 return "Club Information could not be edited"
